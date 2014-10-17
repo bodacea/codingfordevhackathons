@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 #encoding: utf-8
 
 #This is a comment
