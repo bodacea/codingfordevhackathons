@@ -6,5 +6,13 @@ require 'csv'
 rows = CSV.read('ebola-data-db-format.csv')
 
 #look at first two rows from file
+puts rows.length
 puts rows[0].inspect
 puts rows[1].inspect
+
+#Find all the rows about Liberia
+rows.each do |row|
+	if row[1] == "Liberia"
+		puts row
+	end
+end
