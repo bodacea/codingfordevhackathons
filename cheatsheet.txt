@@ -1,0 +1,10 @@
+RAILS
+* Create a rails instance: “rails new <name-of-app>”
+* Start a rails instance: "rails server".  Stop it: ctrl-c
+
+RUBY
+
+
+GITHUB
+
+
