@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subjects: MyText
+  country: MyString
+  format: MyString
+  start: 2014-11-01
+  end: 2014-11-01
+  notes: MyText
+
+two:
+  subjects: MyText
+  country: MyString
+  format: MyString
+  start: 2014-11-01
+  end: 2014-11-01
+  notes: MyText
