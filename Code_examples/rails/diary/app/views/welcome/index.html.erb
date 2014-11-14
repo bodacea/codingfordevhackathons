@@ -1,0 +1,16 @@
+<div>
+  <h1>My favourite websites</h1>
+<% for url, name in @websites %>
+  <li><a href="<%= url %>"><%= name %></a></li>
+<% end %>
+  </div>
+  <img src="http://railsgirls.com/images/rg-warsaw.png" />
+<h1>My Rails Girls Diary</h1>
+  <div>
+<% for entry in @entries %>
+  <h2><%= entry.title %></h2>
+    <p><%= entry.date %></p>
+    <p><%= entry.contents %></p>
+<% end %>
+  </div>
+  </body>
