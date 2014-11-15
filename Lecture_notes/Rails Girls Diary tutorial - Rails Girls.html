@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Rails Girls Diary tutorial - Rails Girls</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/js/prefixfree.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/guides.js"></script>
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="/css/code.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/favicon.png" rel="shortcut icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="span3" href="/" id="logo">
+          <img alt="Rails Girls Guides" src="/images/railsgirls-guides.png" />
+        </a>
+        <nav></nav>
+      </div>
+    </header>
+    <article class="container">
+      <div class="span10">
+        <h1 id="create-your-first-diary-app-with-ruby-on-rails">Create your first diary app with Ruby on Rails</h1>
+
+<p><em>Created by Piotr Szotkowski (<a href="http://chastell.net">chastell</a>) and Tomasz Stachewicz (<a href="http://tomash.wrug.eu/about.html">tomash</a>)</em></p>
+
+<p>We will create a little voting app from scratch using a web development framework for Ruby called Rails. Think what your first application should be about – ideally something simple that includes a collection of some sort: e.g., a to-do list, a diary, etc. We’ll use a diary as the base here.</p>
+
+<p><strong>COACH</strong>: For the rationale behind this slightly different beginners tutorial, take a look at this <a href="http://dotclass.org/rails-girls-warsaw-programme/">post</a>.</p>
+
+<p><strong>Make sure you have Rails installed.</strong> <a href="/install"><strong>Follow the installation guide</strong></a> to get set up.</p>
+
+<h2 id="get-to-know-the-tools">Get to know the tools</h2>
+
+<div class="indent">
+
+  <h3><i class="icon-text-editor">&nbsp;</i></h3>
+
+  <h3 id="text-editor">Text Editor</h3>
+
+  <ul>
+    <li><a href="https://atom.io/">Atom</a>, <a href="http://www.sublimetext.com">Sublime Text</a>,  Vim and Emacs are examples of text editors your can use for writing code and editing files.</li>
+  </ul>
+
+  <h3><i class="icon-prompt">&nbsp;</i></h3>
+
+  <h3 id="terminal-known-as-command-prompt-on-windows">Terminal (known as Command Prompt on Windows)</h3>
+
+  <ul>
+    <li>Where you start the rails server and run commands.</li>
+  </ul>
+
+  <h3><i class="icon-browser">&nbsp;</i></h3>
+
+  <h3 id="web-browser">Web browser</h3>
+
+  <ul>
+    <li>(Firefox, Safari, Chrome) for viewing your application.</li>
+  </ul>
+
+  <p><strong>COACH</strong>: Assist with the installation; make sure the text editor is set up properly (e.g., check whether the encoding is UTF-8).</p>
+
+</div>
+
+<h3 id="important">Important</h3>
+
+<p>It is important that you select the instructions specific to your operating system - the commands you need to run on a Windows computer are slightly different to Mac or Linux. If you’re having trouble check the Operating System switcher at the bottom of the commands. In case you’re using a cloud service (e.g. nitrous), you need to run the Linux commands even if you are on a Windows computer.</p>
+
+<h2 id="pure-html">Pure HTML</h2>
+
+<h3 id="file-and-folder">File and folder</h3>
+
+<p>Create a new directory (folder) and create a file named <code>index.html</code> in it. Open that file in your editor and web browser.</p>
+
+<p><strong>COACH</strong>: Explain that browsers can open local files, only the URL looks stranger than usual.</p>
+
+<h3 id="html-skeleton">HTML skeleton</h3>
+
+<p>Start by adding a general skeleton for your HTML by writing the below into the <code>index.html</code> file:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;!doctype html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">  &lt;head&gt;</span>
+<span class="x">    &lt;title&gt;My Little Webapp: Coding Is Magic&lt;/title&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span>
+<span class="x">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://rawgithub.com/krzysztofbialek/Rails-Girls-Warsaw-App/master/style.css&quot; /&gt;</span>
+<span class="x">  &lt;/head&gt;</span>
+<span class="x">  &lt;body&gt;</span>
+<span class="x">  &lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><strong>COACH</strong>: Explain the two main parts of HTML, <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. Explain the <code>&lt;title&gt;</code> tag and (briefly) <code>&lt;meta&gt;</code> , <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> if needed. Bootstrap is there so that CSS can be skipped altogether (unless participants want to cover it).</p>
+
+<h3 id="first-visible-content">First visible content</h3>
+
+<p>Add the following HTML between the <code>&lt;body&gt;</code> and <code>&lt;/body&gt;</code> tags (feel free to adjust the contents…):</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;h1&gt;My Rails Girls Diary&lt;/h1&gt;</span>
+<span class="x">  &lt;div&gt;</span>
+<span class="x">    &lt;h2&gt;Submitted a Rails Girls application&lt;/h2&gt;</span>
+<span class="x">      &lt;p&gt;1.02.2014&lt;/p&gt;</span>
+<span class="x">      &lt;p&gt;Just submitted an application to a Rails Girls workshop. Can’t wait to see whether I’ll get in!&lt;/p&gt;</span>
+<span class="x">      &lt;h2&gt;Got in!&lt;/h2&gt;</span>
+<span class="x">      &lt;p&gt;15.02.2014&lt;/p&gt;</span>
+<span class="x">      &lt;p&gt;Received an email that my application got accepted! I’ll be at a RG workshop next week!&lt;/p&gt;</span>
+<span class="x">    &lt;h2&gt;The first day starts…&lt;/h2&gt;</span>
+<span class="x">      &lt;p&gt;22.02.2014&lt;/p&gt;</span>
+<span class="x">      &lt;p&gt;Today is the first day of the Rails Girls workshop. My coach is quite strange but it seems we all have Rails installed now and can start learning.&lt;/p&gt;</span>
+<span class="x">  &lt;/div&gt;</span></code></pre></div>
+
+<p>These are your first three diary entries. Note how the different tags get displayed and note the recurring structure.</p>
+
+<p><strong>COACH</strong>: Tell a bit about HTML tags and their semantic meaning.</p>
+
+<h3 id="more-html">More HTML</h3>
+
+<p>Add the following either before or after the above diary entries (again, do adjust to taste):</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;div&gt;</span>
+<span class="x">  &lt;h1&gt;My favourite websites&lt;/h1&gt;</span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">      &lt;li&gt;&lt;a href=&quot;http://railsgirls.com&quot;&gt;Rails Girls&lt;/a&gt;&lt;/li&gt;</span>
+<span class="x">      &lt;li&gt;&lt;a href=&quot;https://en.wikibooks.org/wiki/Ruby_Programming&quot;&gt;Wikibooks&lt;/a&gt;&lt;/li&gt;</span>
+<span class="x">      &lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org&quot;&gt;Ruby on Rails Guides&lt;/a&gt;&lt;/li&gt;</span>
+<span class="x">    &lt;/ul&gt;</span>
+<span class="x">  &lt;/div&gt;</span>
+<span class="x">  &lt;img src=&quot;http://railsgirls.com/images/rg-warsaw.png&quot; /&gt;</span></code></pre></div>
+
+<p>This is an HTML unordered list with some list items containing anchors (links) with hypertext references (URLs) to other pages. It’s followed by a paragraph containing an image – and the image’s source is at the given URL.</p>
+
+<p><strong>COACH</strong>: Explain how the Web works and talk a bit about HTML elements and attributes.</p>
+
+<p><a href="https://github.com/krzysztofbialek/Rails-Girls-Warsaw-App">Here</a>’s a link to repo with styled basic app you can use.</p>
+
+<h2 id="moving-to-rails">Moving to Rails</h2>
+
+<p><strong>COACH</strong>: If your students are on Windows, consider using Nitrous.IO as the basis for the following parts.</p>
+
+<h3 id="new-rails-application">New Rails application</h3>
+
+<p>Open a terminal window (Command Prompt on Windows), change to the directory where your files are (using the <code>cd</code> command) and run <code>rails new diary</code> – this will take some time and end up creating a new Rails application. Run <code>cd diary</code> to change to the app’s directory.</p>
+
+<p><strong>COACH</strong>: Explain how to navigate directories and run commands.</p>
+
+<h3 id="running-the-server">Running the server</h3>
+
+<p>Once in the <code>diary</code> directory run <code>rails server</code> and (once it finishes starting up) go to <a href="http://localhost:3000">http://localhost:3000</a> in your browser. You should see the ‘Welcome aboard’ page. Stop the server by pressing <code>ctrl-c</code>.</p>
+
+<p><strong>COACH</strong>: Explain what has happened and what’s the output in the terminal window. If the server fails to start due to a missing JavaScript runtime, <code>gem install therubyracer</code> and uncomment the relevant line in <code>Gemfile</code>.</p>
+
+<h3 id="first-route-and-view">First route and view</h3>
+
+<p>Create the controller and the route</p>
+
+<p>Run <code>rails generate controller welcome index</code> – this will generate your first controller and a route that leads to it. Start your server and go to <a href="http://localhost:3000">http://localhost:3000</a> to see that your application indeed does support the <code>/welcome/index</code> route.</p>
+
+<p>Stop the server and run <code>rake routes</code> to see all the routes supported by your application.</p>
+
+<p><strong>COACH</strong>: Explain URLs and the URL hierarchy. Explain how in Rails URLs map to ‘what happens behind the scene’.</p>
+
+<h3 id="move-the-view-to-be-the-top-of-your-site">Move the view to be the top of your site</h3>
+
+<p>Edit the <code>config/routes.rb</code> file and uncomment (remove the <code>#</code> from the front) the <code>root ’welcome#index’</code> line (this will probably be the 7th line). This will make the root of your application be the view rendered by the <code>Welcome#index</code> action. Go to <a href="http://localhost:3000">http://localhost:3000</a> and see that indeed the main page of your application now serves this view (rather than the ‘Welcome aboard’ page).</p>
+
+<p><strong>COACH</strong>: Explain how the main page of an application is the root of the URL hierarchy and that it’s the page that people visit when they just put the host name into the browser’s address bar.</p>
+
+<h3 id="move-the-existing-html-to-the-right-view">Move the existing HTML to the right view</h3>
+
+<p>Edit the <code>app/views/welcome/index.html.erb</code> file and copy the contents of the <code>&lt;body&gt;</code> tags from your original <code>index.html</code> file (i.e., the list of diary entries and the website links) there, replacing the two lines (with <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code>) in the view. Refresh the browser to see that the page now indeed contains the right contents.</p>
+
+<p><strong>COACH</strong>: Explain that the view only contains the part between <code>&lt;body&gt;</code> and <code>&lt;/body&gt;</code>, as the rest is common to the whole application and is defined elsewhere.</p>
+
+<h2 id="iteration">Iteration</h2>
+
+<h3 id="repeated-content">Repeated content</h3>
+
+<p>If you look at the structure of your list of links, it seems that every list item looks similar to the others – it contains a URL (where the link should take the user when clicked) and a name (what should the user see and be able to click on). Rather than writing the links as raw HTML (and potentially make a mistake with some of them) let’s abstract this a bit and iterate over a collection of URL-and-name pairs.</p>
+
+<p>Replace the contents of the <code>&lt;ul&gt;</code> tags with the following:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="err">&lt;</span>%
+  @websites = [
+    [&quot;http://railsgirls.com&quot;, &quot;Rails Girls&quot;],
+    [&quot;https://en.wikibooks.org/wiki/Ruby_Programming&quot;, &quot;Wikibooks&quot;],
+    [&quot;http://guides.rubyonrails.org&quot;, &quot;Ruby on Rails Guides&quot;],
+  ]
+%&gt;
+<span class="err">&lt;</span>% for url, name in @websites %&gt;
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&lt;%= url %&gt;&quot;</span><span class="nt">&gt;</span><span class="err">&lt;</span>%= name %&gt;<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="err">&lt;</span>% end %&gt;</code></pre></div>
+
+<p>Refresh the browser window to see whether your page still has the same links.</p>
+
+<p><strong>COACH</strong>: Explain what happened – what is an array, what do <code>&lt;%</code> and <code>&lt;%=</code> ERb tags mean (and how they differ), how iteration works.</p>
+
+<p>Keeping code or data (like the above <code>@websites</code> array) in views is simple, but a bad practice and can bite in the long run. For starters let’s move the <code>@websites</code> array from the view to the controller. Remove it from the view and put it in <code>app/controllers/welcome_controller.rb</code> in the <code>index</code> method so it looks like this:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">WelcomeController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@websites</span> <span class="o">=</span> <span class="o">[</span>
+      <span class="o">[</span><span class="s2">&quot;http://railsgirls.com&quot;</span><span class="p">,</span> <span class="s2">&quot;Rails Girls&quot;</span><span class="o">]</span><span class="p">,</span>
+      <span class="o">[</span><span class="s2">&quot;https://en.wikibooks.org/wiki/Ruby_Programming&quot;</span><span class="p">,</span> <span class="s2">&quot;Wikibooks&quot;</span><span class="o">]</span><span class="p">,</span>
+      <span class="o">[</span><span class="s2">&quot;http://guides.rubyonrails.org&quot;</span><span class="p">,</span> <span class="s2">&quot;Ruby on Rails Guides&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="o">]</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Note that after refreshing your browser window nothing should change – this is because variables starting with @ (called ‘instance variables’) can be accessed by both the view and the controller.</p>
+
+<p><strong>COACH</strong>: Explain the connection between the <code>WecomeController#index</code> action and the view; note and emphasise the difference between @-starting <code>@websites</code> and plain <code>url</code> or <code>name</code>.</p>
+
+<h3 id="create-the-model">Create the model</h3>
+
+<p>With the website links out of the hard-coded way, let’s do something with the diary entries. This time we won’t (ab)use a simple Ruby structure like an array, but a proper model that represents a given entry’s data. Let’s start with generating the model – run <code>rails generate model Entry title:string date:date contents:text</code> to create an <code>Entry</code> model that can represent a diary entry with a title, a publication date and some contents.</p>
+
+<p><strong>COACH</strong>: Explain what models are and the <code>field:type</code> notation for generating them; explain the difference between <code>string</code> and <code>text</code> types if necessary.</p>
+
+<h3 id="migrate-the-database">Migrate the database</h3>
+
+<p>Run <code>rake db:migrate</code> to migrate the database so that its structure contains a table for entries.</p>
+
+<p><strong>COACH</strong>: Explain what databases are (in abstract terms, as vessels for storing our application’s data and providing model structures) and why they are needed. Explain that things which are in memory won’t get persisted by default and they need to be persisted explicitly to be available on the next request.</p>
+
+<h3 id="play-with-the-model-in-the-rails-console">Play with the model in the Rails console</h3>
+
+<p>Now that we have a model, we can start creating instances of that model – i.e., actual diary entries that aren’t hard-coded in the HTML view. For this, we’ll learn a new tool: the Rails console. Start it with <code>rails console</code> and, once it boots and shows: you the <code>&gt;&gt;</code> prompt, create a few entries:</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">&gt;&gt; Entry.create <span class="s2">&quot;title&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;Submitted a Rails Girls application&quot;</span>, <span class="s2">&quot;date&quot;</span> <span class="o">=</span>&gt; Date.new<span class="o">(</span>2014, 2, 1<span class="o">)</span>, <span class="s2">&quot;contents&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;Just submitted an application to a Rails Girls workshop. Can’t wait to see whether I’ll get in!&quot;</span>
+…
+&gt;&gt; Entry.create <span class="s2">&quot;title&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;Got in!&quot;</span>, <span class="s2">&quot;date&quot;</span> <span class="o">=</span>&gt; Date.new<span class="o">(</span>2014, 2, 15<span class="o">)</span>, <span class="s2">&quot;contents&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;Received an email that my application got accepted! I’ll be at a RG workshop next week!&quot;</span>
+…
+&gt;&gt; Entry.create <span class="s2">&quot;title&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;The first day starts…&quot;</span>, <span class="s2">&quot;date&quot;</span> <span class="o">=</span>&gt; Date.new<span class="o">(</span>2014, 2, 22<span class="o">)</span>, <span class="s2">&quot;contents&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;Today is the first day of the Rails Girls workshop. My coach is quite strange but it seems we all have Rails installed now and can start learning.&quot;</span></code></pre></div>
+
+<p>Note how the console – just like <code>rails server</code> – shows you a log of what happens in the background. You can always get an array of all existing entries via <code>Entry.all</code>.</p>
+
+<p><strong>COACH</strong>: Explain what’s going on. Slowly.</p>
+
+<h2 id="viewing-the-persisted-contents">Viewing the persisted contents</h2>
+
+<h3 id="add-the-model-instances-to-the-existing-view">Add the model instances to the existing view</h3>
+
+<p>Edit the <code>WelcomeController#index</code> action (in the <code>app/controllers/welcome_controller.rb</code> file) and add the following either before or after the lines containing <code>@websites</code> definition:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@entries</span> <span class="o">=</span> <span class="no">Entry</span><span class="o">.</span><span class="n">all</span></code></pre></div>
+
+<p>Edit the <code>app/views/welcome/index.html.erb</code> view and replace the lines with the diary entries with the following:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%</span> <span class="k">for</span> <span class="n">entry</span> <span class="k">in</span> <span class="vi">@entries</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="x">  &lt;h2&gt;</span><span class="cp">&lt;%=</span> <span class="n">entry</span><span class="o">.</span><span class="n">title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h2&gt;</span>
+<span class="x">    &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">entry</span><span class="o">.</span><span class="n">date</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">    &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">entry</span><span class="o">.</span><span class="n">contents</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></div>
+
+<p><strong>COACH</strong>: Discuss what happened; discuss what’s the order of the entries and how they can be reordered (say, by reverse date) and where it should happen.</p>
+
+<h3 id="create-a-controller-for-diary-entries">Create a controller for diary entries</h3>
+
+<p>Now that we have a model we need to create a controller for handling actions related to the instances of the model (creating new entries, showing, editing and deleting existing ones). Run <code>rails generate controller Entries</code> – this should generate the <code>EntriesController</code> class. Check <code>rake routes</code> – notice that the controller isn’t enough, we still need to point URLs to the controller’s actions.</p>
+
+<p>Edit <code>config/routes.rb</code> and add a <code>resources "entries"</code> line somewhere inside the <code>Diary::Application.routes.draw</code> block. Run <code>rake routes</code> again: notice how now your application has all kinds of new routes.</p>
+
+<p><strong>COACH</strong>: Explain how Rails’ route resources work and how they make URLs spring to existence and map to controller actions by default.</p>
+
+<h3 id="a-view-of-all-the-entries">A view of all the entries</h3>
+
+<p>As can be seen in the <code>rake routes</code> output, the URLs are wired to their relative controller actions. Let’s see what’s missing – visit <a href="http://localhost:3000/entries">http://localhost:3000/entries</a> in your browser. Uh-oh, it seems like the ‘index’ action is missing – let’s add it – open <code>app/controllers/entries_controller.rb</code> and add the below empty method inside the class definition:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">index</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Now refresh the browser – we no longer have an ‘unknown action’ problem, we now have a ‘template is missing’ problem. Save an empty file as <code>app/views/entries/index.html.erb</code> (note it’s just like the <code>index.html.erb</code> file in the ‘welcome’ directory before, but this time it’s in the ‘entries’ directory) and refresh the browser again – it should display an empty page. This is good, as our view is quite empty at the moment.</p>
+
+<p><strong>COACH</strong>: Explain how actions render the related views by default.</p>
+
+<p>Now go to the <code>app/controllers/welcome_controller.rb</code> file and find the <code>WelcomeController#index</code> method (the one that starts with <code>def index</code>). Find the line that sets the <code>@entries</code> variable (it should start with <code>@entries =</code>) and copy it to <code>EntriesController#index</code> (so to the <code>index</code> method of the <code>EntriesController</code>, which can be found in <code>app/controllers/welcome_controller.rb</code>). Similarly, go to the <code>app/views/welcome/index.html.erb</code> view and copy the <code>@entries.each</code> block (all of the indented lines up to and including the matching <code>end</code>) to the <code>app/views/entries/index.html.erb</code> view. Refresh the browser: it should now show the list of all your diary entries.</p>
+
+<p><strong>COACH</strong>: Explain that even though this might look like little to no progress, there is a significant change: we’re no longer operating in the context of the main page of our app, but rather a list of diary entries only (without the links to other websites, for example).</p>
+
+<h3 id="a-view-of-a-single-entry">A view of a single entry</h3>
+
+<p>Note how, when you run <code>rake routes</code>, the output says that the <code>/entries/:id(.:format)</code> pattern maps to the <code>entries#show</code> controller action. Go to <a href="http://localhost:3000/entries/1">http://localhost:3000/entries/1</a> – the URL for your first diary entry; notice how we’re, again, missing an action of the <code>EntriesController</code>. Add that (empty for now) action, then refresh the browser and add the (likewise, empty) missing view.</p>
+
+<p><strong>COACH</strong>: Guide through adding the missing action and view if needed; make sure the process (all the way from deciphering the right <code>rake routes</code> line) is well understood.</p>
+
+<p>Now, let’s figure out how to interpret the <code>1</code> from the end of the URL to display the right entry. Make the <code>EntriesController#show</code> action look like this:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">show</span>
+  <span class="vi">@entry</span> <span class="o">=</span> <span class="no">Entry</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="s2">&quot;id&quot;</span><span class="o">]</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<p>This line means ‘take the <code>id</code> parameter and use it in the <code>Entry.find</code> method to find the right entry’. Now edit the <code>app/views/entries/show.html.erb</code> view and put there the following:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;h2&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@entry</span><span class="o">.</span><span class="n">title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h2&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@entry</span><span class="o">.</span><span class="n">date</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@entry</span><span class="o">.</span><span class="n">contents</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span></code></pre></div>
+
+<p>Visit <a href="http://localhost:3000/entries/1">http://localhost:3000/entries/1</a> and compare it with <a href="http://localhost:3000/entries/2">http://localhost:3000/entries/2</a> to see how using <code>params[’id’]</code> means that different diary entries get displayed.</p>
+
+<p><strong>COACH</strong>: Explain that the <code>:id</code> part of the URL template from <code>rake routes</code> is made into a key for the <code>params</code> hash; discuss what else can be found in the <code>params</code> hash.</p>
+
+<h3 id="linking-entries">Linking entries</h3>
+
+<p>Run <code>rake routes</code> again; notice how the row for the <code>entries#show</code> action starts with <code>entry</code> in the ‘prefix’ column. Go to the <code>app/views/entries/index.html.erb</code> view and change the line responsible for displaying the title to the below:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;h2&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">entry_path</span><span class="p">(</span><span class="n">entry</span><span class="p">))</span> <span class="cp">%&gt;</span><span class="x">&lt;/h2&gt;</span></code></pre></div>
+
+<p>Note how we use the <code>link_to</code> method that takes two parameters, the text to display (<code>entry.title</code>) and the path to link to. Check the source of the page to see what is the path for subsequent titles. Note how the path is created by calling the <code>entry_path</code> method with <code>entry</code> as its argument.</p>
+
+<p><strong>COACH</strong>: Remind how the HTML for links looks like. Explain the relation between <code>entry_path</code> and the <code>entry</code> prefix from <code>rake routes</code>. Explain why the <code>entry_path</code> method needs the <code>entry</code> argument. Explain what the <code>entry_url</code> method does (and how it differs from the <code>entry_path</code>  method) if you want to.</p>
+
+<p>Now let’s try to get back from an entry screen to the index of all entries: edit the <code>app/views/entries/show.html.erb</code> template and add a link to the entries index, like this:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;Back to all entries&quot;</span><span class="p">,</span> <span class="n">entries_path</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span></code></pre></div>
+
+<p>Note, again, how the <code>entries</code> prefix from <code>rake routes</code> is used to construct the <code>entries_path</code> method name. Note how this method does not need a parameter.</p>
+
+<h2 id="creating-entries-via-the-ui">Creating entries via the UI</h2>
+
+<h3 id="adding-the-new-entry-form">Adding the ‘new entry’ form</h3>
+
+<p>Now that we have a way to display a list of all entries and a single entry, let’s add a way to create new diary entries. Run <code>rake routes</code> and try to figure out which URL (and action) is responsible for new entry creation.</p>
+
+<p>Go to the index of all entries and add a link for creating new entry:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;New entry&quot;</span><span class="p">,</span> <span class="n">new_entry_path</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></div>
+
+<p>Click the link – and add the missing action and view.</p>
+
+<p><strong>COACH</strong>: Make sure this process is well understood by now.</p>
+
+<p>Edit the <code>app/views/entries/new.html.erb</code> view and paste in the below:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="no">Entry</span><span class="o">.</span><span class="n">new</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">form</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">text_field</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s2">&quot;contents&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">text_area</span><span class="p">(</span><span class="s2">&quot;contents&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">submit</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;Back to all entries&quot;</span><span class="p">,</span> <span class="n">entries_path</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span></code></pre></div>
+
+<p><strong>Note:</strong> we can skip labels for now</p>
+
+<p><strong>COACH</strong>: Show how the HTML produced by the <code>form_for</code> helper looks like and try to explain how it works.</p>
+
+<h3 id="handling-the-new-entry-form">Handling the ‘new entry’ form</h3>
+
+<p>Refresh the browser and try adding a new entry – you should see the well-known-by-now ‘unknown action’ error. Add the action to the <code>EntriesController</code>, but for starters let’s display what the action receives:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">create</span>
+  <span class="n">render</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="o">.</span><span class="n">inspect</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Refresh the browser and inspect what exactly the action gets as its params.</p>
+
+<p><strong>COACH</strong>: Explain how filling a text field and a text area and submitting the form ends up with all the params being POSTed to the controller’s action. Explain what .inspect does.</p>
+
+<h3 id="creating-and-persisting-the-new-entry">Creating and persisting the new entry</h3>
+
+<p>Edit the <code>create</code> action and make it look like this:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">create</span>
+  <span class="n">entry_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="s2">&quot;entry&quot;</span><span class="o">]</span>
+  <span class="n">entry</span> <span class="o">=</span> <span class="no">Entry</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">entry_params</span><span class="p">)</span>
+  <span class="n">redirect_to</span><span class="p">(</span><span class="n">entry_path</span><span class="p">(</span><span class="n">entry</span><span class="p">))</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Note how we try to get the parameters of the new entry (its title and contents) from the <code>params</code> hash and then create a new entry from them, just like in the console. Try submitting the form again – notice that we’re still not there yet, as we get a <code>ActiveModel::ForbiddenAttributesError</code>.</p>
+
+<ul>
+  <li>Note: we can skip strong_parameters in the beginning, keeping the application not secure from parameter injection.</li>
+  <li>config.action_controller.permit_all_parameters = true</li>
+  <li>^^ yeah, but it will be removed soon.</li>
+  <li>maybe not before workshops ;)</li>
+</ul>
+
+<p>This error is because of security measures – it’s relatively simple to POST whatever parameters a user wants to, and Rails protects us from a rogue user that would want to set parameters that they’re not supposed to set (like ‘id’). We need to declare which parameters can be set by the user; change the first line of the <code>create</code> action to the below:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">entry_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="s2">&quot;entry&quot;</span><span class="o">].</span><span class="n">permit</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;contents&quot;</span><span class="p">)</span></code></pre></div>
+
+<p>Now try submitting the form again – this time it should work and you should get redirected to the newly-created entry.</p>
+
+<p><strong>COACH</strong>: Make sure the plucking of the new entry’s parameters from <code>params</code> is well understood and that it’s accepted that certain fields need to be permitted explicitly.
+Editing via the UI</p>
+
+<h3 id="adding-the-edit-entry-form">Adding the ‘edit entry’ form</h3>
+
+<p>Now that we can view and create entries, let’s also add the option to edit them. Run <code>rake routes</code> and try to guess which route is responsible for editing an entry.</p>
+
+<p><strong>COACH</strong>: Make sure this is well understood by now.</p>
+
+<p>Edit the <code>app/views/entries/show.html.erb</code> view and add the below line somewhere:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;Edit this entry&quot;</span><span class="p">,</span> <span class="n">edit_entry_path</span><span class="p">(</span><span class="vi">@entry</span><span class="p">))</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span></code></pre></div>
+
+<p>Refresh a given entry’s view and click the link. Add the missing action and an empty view.</p>
+
+<p><strong>COACH</strong>: Again, make sure this is well understood.</p>
+
+<p>Let’s first make sure our <code>edit</code> action exposes the right entry to the view. Make sure the <code>edit</code> action looks just like the <code>show</code> action – i.e., it grabs the right entry based on the id from the URL:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">edit</span>
+  <span class="vi">@entry</span> <span class="o">=</span> <span class="no">Entry</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="s2">&quot;id&quot;</span><span class="o">]</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Now copy the contents of the <code>app/views/entries/new.html.erb</code> view to the <code>app/views/entries/edit.html.erb</code> view, but change the first line so that it’s a form for this particular entry – and, optionally, add a link back to this entry’s show screen:</p>
+
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="vi">@entry</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">form</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">text_field</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s2">&quot;contents&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">text_area</span><span class="p">(</span><span class="s2">&quot;contents&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">form</span><span class="o">.</span><span class="n">submit</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;Back to this entry&quot;</span><span class="p">,</span> <span class="n">entry_path</span><span class="p">(</span><span class="vi">@entry</span><span class="p">))</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;Back to all entries&quot;</span><span class="p">,</span> <span class="n">entries_path</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span></code></pre></div>
+
+<p><strong>COACH</strong>: Make sure all of this is well understood.</p>
+
+<p>Now try to submit the form – which action is still missing? Create it in the controller:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">update</span>
+  <span class="n">entry_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="s2">&quot;entry&quot;</span><span class="o">].</span><span class="n">permit</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;contents&quot;</span><span class="p">)</span>
+  <span class="n">entry</span> <span class="o">=</span> <span class="no">Entry</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="s2">&quot;id&quot;</span><span class="o">]</span><span class="p">)</span>
+  <span class="n">entry</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">entry_params</span><span class="p">)</span>
+  <span class="n">redirect_to</span><span class="p">(</span><span class="n">entry_path</span><span class="p">(</span><span class="n">entry</span><span class="p">))</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Check whether this all works and whether you can now edit the entries.</p>
+
+<p><strong>COACH</strong>: Make sure the <code>update</code> action’s contents are well understood – from permitting params through finding entries to redirecting to the right path.</p>
+
+<h2 id="further-ideas">Further ideas</h2>
+
+<p>Play with your application! Here are some further ideas you might want to add:</p>
+
+<ul>
+  <li>extract form to a partial</li>
+  <li>links for editing an entry straight from the index of entries,</li>
+  <li>a way to delete an entry,</li>
+  <li>a way to edit entry dates,</li>
+  <li>a model for tracking website URLs and names (the list on the main page),</li>
+  <li>setting entry dates to the future and not displaying future entries in the index until their day comes,</li>
+  <li>automatic embedding of video URLs,</li>
+  <li>support for different entry authors,</li>
+  <li>support for different categories of entries,</li>
+  <li>upload and display of images.</li>
+</ul>
+
+      </div>
+    </article>
+    <footer>
+      <p>
+        This work is licensed under a
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>
+      </p>
+      <p>
+        <a href="http://railsgirls.com">Rails Girls</a>
+        &middot; Crafted with excitement from Helsinki, Finland &middot; Follow us on
+        <a href="http://twitter.com/railsgirls">Twitter</a>
+        and
+        <a href="https://www.facebook.com/railsgirls">Facebook</a>
+      </p>
+    </footer>
+    <script type="text/javascript">
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-19631067-3"]);
+        _gaq.push(["_trackPageview"]);
+
+        (function() {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>
