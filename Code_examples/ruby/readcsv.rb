@@ -13,7 +13,6 @@ puts rows[1].inspect
 #Find all the rows about Liberia
 rows.each do |row|
 	if row[1] == "Liberia"
-		puts row.inspect
+		puts row[2]
 	end
 end
-
