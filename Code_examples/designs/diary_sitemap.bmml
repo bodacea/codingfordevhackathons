@@ -1,0 +1,11 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="458" measuredH="387" mockupW="340" mockupH="310">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::SiteMap" x="118" y="77" w="-1" h="-1" measuredW="340" measuredH="310" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>diary_welcome%26bm%3Bdiary_welcome.bmml%26bm%3Bdiary_welcome.bmml%26bm%3Bdiary_welcome.bmml%2Cdiary_entries%26bm%3Bdiary_entries.bmml%26bm%3Bdiary_entries.bmml%26bm%3Bdiary_entries.bmml%2Cdiary_showentry%26bm%3Bdiary_showentry.bmml%26bm%3Bdiary_showentry.bmml%26bm%3Bdiary_showentry.bmml%2Cdiary_editentry%26bm%3Bdiary_editentry.bmml%26bm%3Bdiary_editentry.bmml%26bm%3Bdiary_editentry.bmml%2Cdiary_newentry%26bm%3Bdiary_newentry.bmml%26bm%3Bdiary_newentry.bmml%26bm%3Bdiary_newentry.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22120%2C0%2C220%2C70%22%20href%3D%22diary_welcome.bmml%22%20alt%3D%22diary_welcome%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22120%2C120%2C220%2C190%22%20href%3D%22diary_entries.bmml%22%20alt%3D%22diary_entries%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C240%2C100%2C310%22%20href%3D%22diary_showentry.bmml%22%20alt%3D%22diary_showentry%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22120%2C240%2C220%2C310%22%20href%3D%22diary_editentry.bmml%22%20alt%3D%22diary_editentry%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22240%2C240%2C340%2C310%22%20href%3D%22diary_newentry.bmml%22%20alt%3D%22diary_newentry%22%20id%3D%220%22/%3E</map>
+        <text>Welcome%0A-%20Entries%0A--%20Show%20entry%0A--%20Edit%20entry%0A--%20New%20entry</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

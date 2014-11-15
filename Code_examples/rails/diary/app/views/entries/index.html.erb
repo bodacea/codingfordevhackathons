@@ -1,3 +1,5 @@
+<h1>My Diary</h1>
+
 <% for entry in @entries %>
   <h2><%= link_to(entry.title, entry_path(entry)) %></h2>
     <p><%= entry.date %></p>
@@ -5,3 +7,5 @@
 <% end %>
 
 <%= link_to("New entry", new_entry_path) %>
+
+<p><%= link_to("Main Page", welcome_index_path) %>
